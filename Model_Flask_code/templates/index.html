@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>MPG Predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body style="background: #000000;">
+ <div class="login">
+	<h1>MPG predictor</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        <!-- These are the dropdown and edit boxes for gathering our input features -->
+    <label for="year">Year:</label>
+    <select name="year" id="year"> 
+      <option value="2000">2000</option> 
+      <option value="2001">2001</option> 
+      <option value="2002">2002</option> 
+      <option value="2003">2003</option>
+      <option value="2004">2004</option> 
+      <option value="2005">2005</option> 
+      <option value="2006">2006</option> 
+      <option value="2007">2007</option> 
+      <option value="2008">2008</option>  
+      <option value="2009">2009</option> 
+      <option value="2010">2010</option> 
+      <option value="2011">2011</option> 
+      <option value="2012">2012</option>  
+      <option value="2013">2013</option> 
+      <option value="2014">2014</option> 
+      <option value="2015">2015</option> 
+      <option value="2016">2016</option>
+      <option value="2017">2017</option> 
+      <option value="2018">2018</option> 
+      <option value="2019">2019</option> 
+      <option value="2020">2020</option> 
+      <option value="2021">2021</option>  
+      <option value="2022">2022</option> 
+      <option value="2023">2023</option> 
+      <option value="2024">2024</option>  
+    </select>
+    <label for="cylinders">Number of engine cylinders:</label>
+    <select name="cylinders" id="cylinders"> 
+      <option value="3">3</option> 
+      <option value="4">4</option> 
+      <option value="5">5</option> 
+      <option value="6">6</option>
+      <option value="8">8</option> 
+      <option value="10">10</option> 
+      <option value="12">12</option> 
+      <option value="16">16</option> 
+    </select>
+    <label for="displ">Cylinder displacement (L):</label>
+		<input type="text" name="displ" placeholder="displacement" required="required" />
+    <label for="vehicle_class">Vehicle Class:</label>
+    <select name="vehicle_class" id="vehicle_class"> 
+      <option value="Compact Car">Compact Car</option> 
+      <option value="Large Car">Large Car</option> 
+      <option value="Midsize Car">Midsize Car</option> 
+      <option value="Midsize-Large Station Wagon">Midsize-Large Station Wagon</option>
+      <option value="Minicompact Car">Minicompact Car</option> 
+      <option value="Minivan">Minivan</option> 
+      <option value="Small Pickup Truck">Small Pickup Truck</option> 
+      <option value="Small Station Wagon">Small Station Wagon</option> 
+      <option value="Sport Utility Vehicle">Sport Utility Vehicle</option>  
+      <option value="Standard Pickup Truck">Standard Pickup Truck</option> 
+      <option value="Subcompact Car">Subcompact Car</option> 
+      <option value="Two Seater">Two Seater</option> 
+      <option value="Van">Van</option>  
+    </select>
+    <label for="drive">Drive:</label>
+    <select name="drive" id="drive"> 
+      <option value="All-Wheel Drive">All-Wheel Drive</option> 
+      <option value="Front-Wheel Drive">Front-Wheel Drive</option> 
+      <option value="Rear-Wheel Drive">Rear-Wheel Drive</option> 
+    </select>
+    <label for="trany">Transmission:</label>
+    <select name="trany" id="trany"> 
+      <option value="Automatic">Automatic</option> 
+      <option value="Manual">Manual</option>  
+    </select>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict car's MPG</button>
+
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
